@@ -31,11 +31,12 @@ src="https://www.facebook.com/tr?id=1499763472034062&ev=PageView&noscript=1"
   *{box-sizing:border-box;margin:0;padding:0}
   html,body{background:#fff}
   body{font-family:Poppins,system-ui,-apple-system,sans-serif;color:#111;min-height:100vh;min-height:100dvh;
-    display:flex;align-items:center;justify-content:center;padding:28px 20px;background:#fff}
+    display:flex;align-items:center;justify-content:center;padding:28px 20px;
+    background:radial-gradient(600px 400px at 50% 0%, #fff1f4 0%, #fff 70%)}
   .wrap{width:100%;max-width:420px;text-align:center}
-  .photo{position:relative;width:200px;height:200px;margin:0 auto 22px;border-radius:50%;padding:3px;
-    background:#eee}
-  .photo img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 22%;border:3px solid #fff;display:block}
+  .photo{position:relative;width:200px;height:200px;margin:0 auto 22px;border-radius:50%;padding:4px;
+    background:linear-gradient(135deg,#ff3d77,#ff9a8b,#ffd1dc)}
+  .photo img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 22%;border:4px solid #fff;display:block}
   .name{font-weight:700;font-size:18px;display:flex;align-items:center;justify-content:center;gap:6px}
   .name svg{width:18px;height:18px}
   .user{color:#8a8a8a;font-size:13px;margin-top:2px}
@@ -43,8 +44,10 @@ src="https://www.facebook.com/tr?id=1499763472034062&ev=PageView&noscript=1"
   p.sub{font-size:16px;color:#555;line-height:1.5;max-width:330px;margin:0 auto}
   .cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:28px;padding:19px 20px;
     border-radius:16px;text-decoration:none;color:#fff;font-weight:800;font-size:17px;letter-spacing:.01em;
-    background:#111;box-shadow:none;transition:transform .15s,opacity .15s}
-  .cta:active{transform:scale(.97);opacity:.9}
+    background:linear-gradient(135deg,#ff2e6e,#ff5c8a);box-shadow:0 12px 30px rgba(255,46,110,.35);
+    animation:pulse 2.2s ease-in-out infinite;transition:transform .15s}
+  .cta:active{transform:scale(.97)}
+  @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.035)}}
   footer{margin-top:44px;font-size:11.5px;color:#b5b5b5;line-height:1.6}
 </style>
 </head>
@@ -55,10 +58,10 @@ src="https://www.facebook.com/tr?id=1499763472034062&ev=PageView&noscript=1"
     </div>
     <div class="user">@bruvalente</div>
 
-    <h1>Tudo que você quer ver, em um único lugar</h1>
-    <p class="sub">Vem já pro meu grupo gratuito, tá esperando o quê?</p>
+    <h1>Tudo que você quer ver, em um único lugar! 😈</h1>
+    <p class="sub">Vem já pro meu grupo gratuito, tá esperando o quê? 🫣</p>
 
-    <a class="cta" id="cta-telegram" href="https://t.me/abrunavalente" rel="noopener">ENTRAR AGORA MESMO</a>
+    <a class="cta" id="cta-telegram" href="https://t.me/abrunavalente" rel="noopener">😈 ENTRAR AGORA MESMO! 😈</a>
     <script>
       (function () {
         var cta = document.getElementById('cta-telegram');
@@ -76,7 +79,7 @@ src="https://www.facebook.com/tr?id=1499763472034062&ev=PageView&noscript=1"
       })();
     </script>
 
-    <footer>Criadora digital · conteúdo exclusivo<br>Somente para maiores de 18 anos</footer>
+    <footer>Criadora digital ✨ conteúdo feito com IA<br>Somente para maiores de 18 anos</footer>
   </main>
 </body>
 </html>
