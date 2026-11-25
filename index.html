@@ -20,7 +20,34 @@ t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '1110057465181877');
-fbq('track', 'PageView');
+
+function metaEventId(){
+  return (window.crypto && crypto.randomUUID) ? crypto.randomUUID() : String(Date.now()) + Math.random().toString(16).slice(2);
+}
+function getCookie(name){
+  var m = document.cookie.match(new RegExp('(?:^|; )' + name.replace(/([.$?*|{}()[\]\\/+^])/g,'\\$1') + '=([^;]*)'));
+  return m ? decodeURIComponent(m[1]) : null;
+}
+function sendCapi(eventName, eventId){
+  try {
+    fetch('/api/capi', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        event_name: eventName,
+        event_id: eventId,
+        event_source_url: location.href,
+        fbp: getCookie('_fbp'),
+        fbc: getCookie('_fbc')
+      }),
+      keepalive: true
+    }).catch(function(){});
+  } catch (e) {}
+}
+
+var pageViewId = metaEventId();
+fbq('track', 'PageView', {}, {eventID: pageViewId});
+sendCapi('PageView', pageViewId);
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1110057465181877&ev=PageView&noscript=1"
@@ -68,12 +95,14 @@ src="https://www.facebook.com/tr?id=1110057465181877&ev=PageView&noscript=1"
         cta.addEventListener('click', function (e) {
           e.preventDefault();
           var url = cta.href;
+          var eventId = metaEventId();
           if (typeof fbq === 'function') {
-            fbq('track', 'Contact');
+            fbq('track', 'Contact', {}, {eventID: eventId});
           }
+          sendCapi('Contact', eventId);
           setTimeout(function () {
             window.location.href = url;
-          }, 350);
+          }, 400);
         });
       })();
     </script>
